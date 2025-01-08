@@ -51,38 +51,25 @@ Singular's modular architecture allows for the easy integration of new capabilit
 - Privacy-preserving verification using zero-knowledge proofs or secure multiparty computation
 - User-friendly dashboard for exploring and analyzing agent execution traces
 
-Phase 1 - Awareness and Adoption
-- Seeding Singular Agent with an extensive knowledge base
+Phase 1 - Initialization
+- Base State Machine implementation with self-validating merkle-chain log system
+- LLM Layer for generative webpages & knowledge acquisition
+- Web Scraping Layer
+- IPFS Integration
 
-Phase 2 - Enhanced Logging and Monitoring
+Phase 2 - Enhanced Reasoning & Logging
 - Extend logging to capture more granular agent state (e.g. individual perceptions, sub-goals, reasoning steps)
-- Develop pluggable logging backends for integration with popular data storage and analytics platforms 
 - Build monitoring dashboard with real-time views into agent operation and configurable alerts for anomalous behavior
 - Enable "replay" functionality to step through agent execution traces for debugging and auditing
 
-Phase 3 - Multi-Agent Communication Protocols  
-- Define standard schemas for logging messages passed between Singular-enabled agents
+Phase 3 - Autonomous Agent Ecosystems
+- Singular Registry & Discovery service for Singular agents to find and interact with each other
+- Define standards for agent coordination, delegation, and mutual verification of task completion
+
+Phase 4 - Multi-Agent Communication Protocols
+- Define standard schemas for logging messages passed between Singular-enabled agents based on Activity Pub
 - Implement relay network for secure, verifiable routing of inter-agent communications
 - Extend state machine to model interaction patterns and protocols between agent groups
-- Explore techniques like homomorphic encryption and secure multi-party computation for privacy-preserving communication logging
-
-Phase 4 - Formal Verification and Compliance
-- Partner with academic researchers to formalize semantics of Singular's logging and proof system
-- Develop verification tools to automatically check agent logs against specified properties and invariants  
-- Work with standards bodies and regulatory agencies to establish guidelines for using Singular proofs to meet AI audit and compliance requirements
-- Integrate support for hardware-based trusted execution environments for tamperproof logging
-
-Phase 5 - Autonomous Agent Ecosystems
-- Build registry and discovery service for Singular agents to find and interact with each other based on capabilities
-- Define standards for agent coordination, delegation, and mutual verification of task completion
-- Implement programming model and orchestration layer for composing multi-agent systems with enforceable SLAs
-- Explore economic mechanisms like bounties/rewards to incentivize development of verifiably robust agent components  
-
-Phase 6 - Artificial General Intelligence Scaffolding 
-- Leverage Singular logs as rich knowledge base for AI training data and "algorithmic transparency"
-- Evolve agent architecture to support open-ended reasoning and goal formation while preserving verifiability
-- Develop infrastructure for secure containment and consensual value learning in AGI agents
-- Establish cross-disciplinary consortium to address ethics and safety considerations in provable AGI deployment
 
 This road map lays out an ambitious vision for evolving Singular from a single-agent logging tool into a comprehensive framework for building transparent, accountable, and interoperable AI systems. The phased approach allows for iterative development guided by community input, with an ultimate aim of providing a robust scaffolding for provably beneficial artificial general intelligence. Key priorities include:
 
