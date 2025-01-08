@@ -87,10 +87,10 @@ const validTransitions: Record<AgentState, AgentState[]> = {
     IDLE: ['INIT', 'ERROR', 'TERMINATED'],
     INIT: ['GOAL_PARSE', 'ERROR', 'TERMINATED', 'IDLE'],
     GOAL_PARSE: ['PLANNING', 'ERROR', 'TERMINATED', 'IDLE'],
-    PLANNING: ['EXECUTING', 'ERROR', 'TERMINATED', 'IDLE'],
+    PLANNING: ['PLANNING', 'EXECUTING', 'ERROR', 'TERMINATED', 'IDLE'],
     EXECUTING: ['EXECUTING','VALIDATING', 'REPORTING', 'ERROR', 'TERMINATED', 'IDLE'],
-    VALIDATING: ['REPORTING', 'EXECUTING', 'ERROR', 'TERMINATED', 'IDLE'],
-    REPORTING: ['REPORTING','COMPLETED', 'ERROR', 'TERMINATED', 'IDLE'],
+    VALIDATING: ['VALIDATING', 'COMPLETED', 'REPORTING', 'EXECUTING', 'ERROR', 'TERMINATED', 'IDLE'],
+    REPORTING: ['VALIDATING','REPORTING','COMPLETED', 'ERROR', 'TERMINATED', 'IDLE'],
     COMPLETED: ['TERMINATED', 'IDLE'],
     ERROR: ['TERMINATED', 'IDLE'],
     TERMINATED: []
@@ -235,7 +235,7 @@ export class AgentStateMachine extends BaseState {
         });
       });
 
-      console.log(this.stateNodes)
+    //   console.log(this.stateNodes)
     }
   
     /**
