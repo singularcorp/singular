@@ -3,7 +3,9 @@ Singular Systems
 ![banner](https://github.com/user-attachments/assets/0caf7c05-d639-4828-8cba-8c0156929280)
 
 # Provable AI Agent Authenticity
- 
+
+** PREVIEW OF UNRELEASED CODEBASE
+
 Introduction
 ------------
 Singular is a system for establishing trust and verifiability in the execution of autonomous AI agents. It generates cryptographically secure logs of an agent's internal state transitions and communications, creating an immutable record that can be audited to confirm the agent's authentic operation.
