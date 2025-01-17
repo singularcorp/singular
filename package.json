@@ -1,0 +1,52 @@
+{
+  "name": "singular",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.ts",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/ethcarter/singular.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/ethcarter/singular/issues"
+  },
+  "homepage": "https://gitlab.com/ethcarter/singular#readme",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.33.1",
+    "@langchain/core": "^0.3.29",
+    "@tatumio/tatum": "^4.2.45",
+    "async-mutex": "^0.5.0",
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.18.2",
+    "got": "^14.4.5",
+    "langchain": "^0.3.11",
+    "merkletreejs": "^0.4.1",
+    "oauth-1.0a": "^2.2.6",
+    "pg-boss": "^10.1.6",
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.19",
+    "nodemon": "^3.1.9",
+    "tsx": "^4.7.1",
+    "typescript": "^5.3.3"
+  },
+  "nodemonConfig": {
+    "execMap": {
+      "ts": "npx tsx"
+    }
+  }
+}
