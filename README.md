@@ -2,7 +2,7 @@
 
 A sophisticated autonomous agent framework implementing verifiable state machines and evolving personas with cryptographic proofs.
 
-![Singular Systems Logo](logo.png)
+![banner](https://github.com/user-attachments/assets/0caf7c05-d639-4828-8cba-8c0156929280)
 
 ## Overview
 
