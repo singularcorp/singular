@@ -268,6 +268,18 @@ export class VersionedTree<T> implements IVersionedTree<T> {
         }
         this.currentNode = currentNode;
     }
+
+    /**
+     * Updates the data of the current node
+     * @param newData Updated data to set
+     */
+    updateCurrentData(newData: T): void {
+        const currentNode = this.getCurrentNode();
+        if (!currentNode) {
+            throw new Error('No current node available');
+        }
+        currentNode.data = newData;
+    }
 }
 
 // Example usage:

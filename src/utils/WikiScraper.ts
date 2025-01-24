@@ -1,31 +1,51 @@
-// Wikipedia API Scraper
-// This script demonstrates various ways to interact with the MediaWiki API
+/**
+ * Wikipedia API Scraper Module
+ * Provides a comprehensive interface for interacting with the MediaWiki API
+ * to fetch and process Wikipedia article data.
+ * @module WikiScraper
+ */
 
+/**
+ * Parameters interface for MediaWiki API requests
+ * Allows for flexible parameter passing with various data types
+ */
 interface WikiParams {
     [key: string]: string | number | boolean;
 }
 
+/**
+ * Represents the structure of a Wikipedia page response
+ * Contains optional fields for different aspects of a page
+ */
 interface WikiPage {
-    extract?: string;
-    categories?: Array<{title: string}>;
-    links?: Array<{title: string}>;
-    revisions?: Array<{
-        timestamp: string;
-        user: string;
-        comment: string;
-        size: number;
+    extract?: string;                 // Plain text content extract
+    categories?: Array<{title: string}>; // Page categories
+    links?: Array<{title: string}>;   // Internal wiki links
+    revisions?: Array<{              // Edit history
+        timestamp: string;           // When the edit was made
+        user: string;               // Username of editor
+        comment: string;            // Edit summary
+        size: number;              // Page size in bytes
     }>;
 }
 
+/**
+ * Public interface for Wikipedia article data
+ * Used for search results and article metadata
+ */
 export interface WikiArticle {
-    title: string;
-    snippet: string;
-    pageid: number;
-    size: number;
-    timestamp: string;
-    url: string;
+    title: string;     // Article title
+    snippet: string;   // Brief excerpt for search results
+    pageid: number;    // Unique Wikipedia page ID
+    size: number;      // Article size in bytes
+    timestamp: string; // Last modification time
+    url: string;       // Full Wikipedia URL
 }
 
+/**
+ * Structure of API responses from MediaWiki
+ * Contains nested query results with pages or search data
+ */
 interface WikiResponse {
     query: {
         pages: {
@@ -41,19 +61,29 @@ interface WikiResponse {
     };
 }
 
-// Wikipedia API Scraper
-// This script demonstrates various ways to interact with the MediaWiki API
-
+/**
+ * WikiScraper class provides methods to interact with Wikipedia's MediaWiki API
+ * Handles article searches, content retrieval, and metadata extraction
+ */
 export class WikiScraper {
     private apiEndpoint: string;
     private baseUrl: string;
 
+    /**
+     * Creates a new WikiScraper instance
+     * @param apiEndpoint - MediaWiki API endpoint URL (defaults to English Wikipedia)
+     */
     constructor(apiEndpoint = 'https://en.wikipedia.org/w/api.php') {
         this.apiEndpoint = apiEndpoint;
         this.baseUrl = 'https://en.wikipedia.org/wiki/';
     }
 
-    // Helper method to build API URL with parameters
+    /**
+     * Constructs a complete API URL with query parameters
+     * @param params - Key-value pairs of API parameters
+     * @returns Formatted URL string for API request
+     * @private
+     */
     private buildUrl(params: WikiParams): string {
         const defaultParams = {
             format: 'json',
@@ -64,7 +94,12 @@ export class WikiScraper {
         return `${this.apiEndpoint}?${queryString}`;
     }
 
-    // Fetch article content
+    /**
+     * Retrieves the plain text content of a Wikipedia article
+     * @param title - Title of the Wikipedia article
+     * @returns Promise resolving to article content or undefined
+     * @throws Error if API request fails
+     */
     async getArticleContent(title: string): Promise<string | undefined> {
         const params: WikiParams = {
             action: 'query',
@@ -86,12 +121,23 @@ export class WikiScraper {
         }
     }
 
-    // Helper method to get Wikipedia URL for a title
+    /**
+     * Converts article title to Wikipedia URL format
+     * @param title - Article title
+     * @returns Formatted Wikipedia URL
+     * @private
+     */
     private getWikiUrl(title: string): string {
         return `${this.baseUrl}${encodeURIComponent(title.replace(/ /g, '_'))}`;
     }
 
-    // Search Wikipedia articles
+    /**
+     * Searches Wikipedia articles based on query string
+     * @param query - Search terms
+     * @param limit - Maximum number of results (default: 10)
+     * @returns Promise resolving to array of search results with URLs
+     * @throws Error if search request fails
+     */
     async searchArticles(query: string, limit = 10): Promise<Array<{
         title: string;
         snippet: string;
@@ -121,7 +167,12 @@ export class WikiScraper {
         }
     }
 
-    // Get article categories
+    /**
+     * Retrieves categories associated with a Wikipedia article
+     * @param title - Article title
+     * @returns Promise resolving to array of category titles
+     * @throws Error if category retrieval fails
+     */
     async getArticleCategories(title: string): Promise<string[]> {
         const params: WikiParams = {
             action: 'query',
@@ -142,7 +193,12 @@ export class WikiScraper {
         }
     }
 
-    // Get article links
+    /**
+     * Retrieves internal links from a Wikipedia article
+     * @param title - Article title
+     * @returns Promise resolving to array of linked article titles
+     * @throws Error if link retrieval fails
+     */
     async getArticleLinks(title: string): Promise<string[]> {
         const params: WikiParams = {
             action: 'query',
@@ -163,7 +219,13 @@ export class WikiScraper {
         }
     }
 
-    // Get article revisions
+    /**
+     * Retrieves revision history of a Wikipedia article
+     * @param title - Article title
+     * @param limit - Maximum number of revisions to fetch (default: 10)
+     * @returns Promise resolving to array of revision details
+     * @throws Error if revision history retrieval fails
+     */
     async getArticleRevisions(title: string, limit = 10): Promise<Array<{
         timestamp: string;
         user: string;
