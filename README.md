@@ -57,8 +57,13 @@ npm install
 Create a `.env` file with:
 
 ```env
-POSTGRES_URL=your_postgres_connection_string
-CLAUDE_API_KEY=your_anthropic_api_key
+CLAUDE_API_KEY=xxxx
+IPFS_KEY=xxxx
+POSTGRES_URL=xxxx
+RAGIE_API_KEY=xxxx
+RAGIE_API_KEY=xxxx
+HELIS_SOLANA_URL=xxxx
+HELIS_SOLANA_API_KEY=xxxx
 ```
 
 ### Basic Usage
